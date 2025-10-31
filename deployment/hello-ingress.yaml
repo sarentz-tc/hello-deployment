@@ -1,15 +1,14 @@
-apiVersion: networking.k8s.io/v1
 kind: Ingress
+apiVersion: networking.k8s.io/v1
 metadata:
   name: hello
   namespace: hello
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
     - http:
+        host: hello.dev-wavelo-bis.cnco.tucows.systems
         paths:
-          - path: /hello
+          - path: /
             pathType: Prefix
             backend:
               service:
