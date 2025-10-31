@@ -4,8 +4,8 @@ metadata:
   name: hello-tls
   namespace: hello
   annotations:
-    spec.ingressClassName: traefik
     cert-manager.io/cluster-issuer: prod-secops-ca
+    kubernetes.io/ingress.class: traefik
 spec:
   rules:
     - host: hello.dev-wavelo-bis.cnco.tucows.systems
