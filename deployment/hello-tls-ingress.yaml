@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-tls
+  namespace: hello
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: prod-secops-ca
+spec:
+  rules:
+    - host: hello.dev-wavelo-bis.cnco.tucows.systems
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello
+                port:
+                  number: 80
+  tls:
+    - secretName: hello-tls
+      hosts:
+        - hello.dev-wavelo-bis.cnco.tucows.systems
